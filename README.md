@@ -1,6 +1,6 @@
 ﻿# Python Project ——Group 5
 
- **!!! Shell Frame !!!**
+ **Shell Frame**
  1. BackGround
 	###### 1.1 Injection
 	###### 1.2 Purpose
@@ -55,7 +55,7 @@ from tkinter import font as tkfont
 from PIL import Image, ImageTk
 ```
 ### 2.2 Input Dataset
-```python.3.11
+```python
 # Creat Folder
 folders1 = "train path"
 folders2 = "image path"
@@ -71,13 +71,13 @@ def getpath(folderpath):
 			file_paths.append(file_path)
 	return file_paths
 ```
-```python.3.11
+```python
 trainpath = getpath(folders1)
 imagepath = getpath(folders2)
 tpath = trainpath[0]
 ipath = imagepath[0]
 ```
-```python.3.11
+```python
 train_path = cf.tpath
 # Seprate data by Specific symbols
 # Reset Index, Rename Columns
@@ -85,7 +85,7 @@ train_data = pd.read_csv(train_path, sep=':::', names=['Title', 'Type', 'Descrip
 train_data = pd.DataFrame(train_data , index=range(1,len(train_data)+1))
 ```
 ### 2.3 Data Preview
-```python.3.11
+```python
 # train_data
 print(train_data.head())
 ```
@@ -112,20 +112,20 @@ dtypes: object(3)
 memory usage: 1.2+ MB
 
 ----
-```python.3.11
+```python
 train_data.shape 
 ```
 (54214, 4)
 
 ----
-```python.3.11
+```python
 train_data.columns
 ```
 Index(['Title', 'Type', 'Description'], dtype='object')
 
 ---
 
-```python.3.11
+```python
 train_data.isnull().sum()
 ```
 Title          0
@@ -137,7 +137,7 @@ dtype: int64
 ---
 ### 2.4 Data Processing
 #### 2.41 *DataCleaning*
-```python.3.11
+```python
 # DataClening for Visualization
 # filte out error value
 def dataclean(input_list):
@@ -152,7 +152,7 @@ def dataclean(input_list):
 	
 	return clean_data
 ```
-```python.3.11
+```python
 # Using dataclean to Filter Wrong Values
 set(dataclean(train_data["Year"]))
 ```
@@ -160,7 +160,7 @@ set(dataclean(train_data["Year"]))
 
 ---
 #### 2.42 *DataProcessing*
-```python.3.11
+```python
 # Separate Title, Year
 name_year = train_data["Title"]
 year_container = list()
@@ -220,7 +220,7 @@ dict_["Year"] = year_list
 dict_["count"]=count_list
 dict_DataFrame=pd.DataFrame(dict_)
 ```
-```python.3.11
+```python
 # Check Year list and Type list
 print(year_list) # Every Single Year
 print(type_list) # Every Single Type
@@ -229,7 +229,7 @@ print(type_list) # Every Single Type
 ```
 #### 2.43 Visualization
 ##### a> Distribution of Types
-```python.3.11
+```python
 plt.figure(figsize=(14,6))
 sns.countplot(data=train_data, y='Type', order=train_data['Type'].value_counts().index)
 
@@ -242,7 +242,7 @@ plt.savefig('plot_1 (Distribution of Types(Transverse).png')
 ```
 ![Plot_1: Distribution of Types](/imgs/2023-12-20/VEkI2xdDWknfXETd.png)
 
-```python.3.11
+```python
 # Plot distribution of genres using bar plot
 plt.figure(figsize=(14, 8))
 counts = train_data['Type'].value_counts()
@@ -256,7 +256,7 @@ plt.savefig('plot_2 (Distribution of Types(Vertical)).png')
 ![Plot_2: Distribution of Types](/imgs/2023-12-20/CtFW1m6TpC3d4Z52.png)
 
 ##### b> Distribution of Films_number in Years
-```python.3.11
+```python
 # Plot Distribution of Films_number in years
 sns.lineplot(x='Year', data=dict_DataFrame , y='count')
 plt.xlabel('Year')
@@ -267,7 +267,7 @@ plt.show()
 ```
 ![Distribution of Films_number in years](/imgs/2023-12-20/QGnwBiHFbKBTv01r.png)
 #### 2.44 Checking
-```python.3.11
+```python
 print(train_data.head()) # Check the processed Data
 print(train_data.info)
 print(train_data.columns)
@@ -281,7 +281,8 @@ print(train_data.columns)
 |4|The Secret Sin|drama|To help their unemployed father make ends...|1915|
 |5|The Unrecovered|drama|The film's title refers not only to...|2007|
 [ 54214 rows, 4 columns ]
-```python.3.11
+
+```python
 train_data.info()
 ```
 <class 'pandas.core.frame.DataFrame'>
@@ -298,7 +299,7 @@ memory usage: 1.7+ MB
 None
 
 ---
-```python.3.11
+```python
 train_data['Year'].value_counts() # Number of occurrences corresponding year
 ```
 Year
@@ -314,7 +315,7 @@ SRI)       1
 Atro       1
 Name: count, Length: 158, dtype: int64
 
-```python.3.11
+```python
 train_data['Type'].value_counts() # Number of occurrences corresponding type
 ```
 Type
@@ -349,20 +350,20 @@ war              132
 ---
 #### 2.45 SearchingPart
 **This Part Showing in Terminal !!!**
-```python.3.11
+```python
 import pandas as pd
 import time
 import Create_folders as cf
 from Data_Processing import type_list, year_list, train_data, data_rows
 ```
-```python.3.11
+```python
 def Seach():
 	Name_Search() 		# Input FilmNames to Check
 	Type_Search() 		# Input FilmTypes to Check
 	KeyWords_Search()	# Input FilmWords to Check
 	Year_Search()		# Input FilmYears to Check
 ```
-```python.3.11
+```python
 Search()
 ```
 ```python
@@ -387,7 +388,7 @@ Description:
 ............ More can be shown
 '''
 ```
-```python.3.11
+```python
 # "KeyWords"
 # Input any KeyWords (Input 0 TO SHUT DOWN):
 # >>> love
@@ -414,7 +415,7 @@ Title:Before I lay me down to Sleep
 Year:2019 
 Description: If you were given only six months to a year to'''
 ```
-```python.3.11
+```python
 # "YearSearch"
 # Input Year Single Choice(1) / Year Range(num!=1)
 # >>> 0
@@ -444,7 +445,7 @@ More will be shown.......
 ## 3. Part Three : User Interface
 
  - 3.0 **Frame**
-```python.3.9
+```python
 class Application(tk.Frame):
 	def __init__(self, root):
 		super().__init__(root)
@@ -464,12 +465,12 @@ class Application(tk.Frame):
 ```
 
  - 3.1 **Login Interface**
-```python.3.11
+```python
 # The login interface Code
 ```
 
  - 3.2 **HomePage**
-```python.3.11
+```python
 def HomePage(self):
 	title_font = tkfont.Font(family='Helvetica', size=24, weight='bold')
 	 # Title 
@@ -517,7 +518,7 @@ def buttonActive(self): # button
 
  - 3.3 **Search Page**
 
-```python.3.9
+```python
 class Searching(tk.Frame):
 	def __init__(self):
 		super().__init__()
@@ -581,7 +582,7 @@ class Searching(tk.Frame):
 			label = tk.Label(result_window, text=result)
 			label.pack()
 ```
-```python.3.9
+```python
 if __name__ == '__main__':
 	root = tk.Tk()
 	application = Application(root=root)
@@ -606,7 +607,7 @@ root.mainloop()
 ## 4. Part Four : Work Contribution
 **Thanks for every members in Gruop No.5**
 Each member carefully and responsibly completed their tasks.
-```python.3.11
+```python
 labels = ['Huang Siqi', 'Chen Zhuoxuan', 'Liang Yirui', 'Tu Yixin','Chen Qianqi','Li Minghao']
 each = 100/6
 sizes = [each, each, each, each,each,each]
