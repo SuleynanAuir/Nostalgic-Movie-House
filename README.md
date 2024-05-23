@@ -32,7 +32,7 @@
 ## 2. Part Two : CodePart
 
 ### 2.1 Package
-```python.3.11
+```python
 # This Python 3.11 environment 
 # Defined by https://www.kaggle.com/datasets/hijest/genre-classification-dataset-imdb
 import numpy as pd
